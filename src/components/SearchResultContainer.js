@@ -16,7 +16,13 @@ class SearchResultContainer extends Component {
 
   generatePeople = () => {
     API.search()
-      .then(res => this.setState({ results: res }))
+      .then(res => {
+        this.setState({ results: res.data.results[0] });
+        // console.log({ results: res.data.results[0] });
+        console.log(this.state.results);
+        console.log('----------------');
+        console.log(res.data.results[0])//contains the info needed
+      })
       .catch(err => console.log(err));
   };
 
