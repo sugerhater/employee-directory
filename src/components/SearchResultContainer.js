@@ -15,15 +15,26 @@ class SearchResultContainer extends Component {
   }
 
   generatePeople = () => {
-    API.search()
+    for (let i =0; i< 15; i++){
+      API.search()
       .then(res => {
-        this.setState({ results: res.data.results[0] });
+        this.setState({ results: [...this.state.results, res.data.results[0] ]});
         // console.log({ results: res.data.results[0] });
         console.log(this.state.results);
         console.log('----------------');
-        console.log(res.data.results[0])//contains the info needed
+        // console.log(res.data.results[0])//contains the info needed
       })
       .catch(err => console.log(err));
+    }
+    // API.search()
+    //   .then(res => {
+    //     this.setState({ results: res.data.results[0] });
+    //     // console.log({ results: res.data.results[0] });
+    //     console.log(this.state.results);
+    //     console.log('----------------');
+    //     console.log(res.data.results[0])//contains the info needed
+    //   })
+    //   .catch(err => console.log(err));
   };
 
   // handleInputChange = event => {
@@ -49,7 +60,7 @@ class SearchResultContainer extends Component {
           // handleInputChange={this.handleInputChange}
         /> */}
         <ResultList 
-        // results={this.state.results} 
+        results={this.state.results} 
         />
       </div>
     );
