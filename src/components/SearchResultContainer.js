@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import SearchForm from "./SearchForm";
 import ResultList from "./ResultList";
 import API from "../utils/API";
-
+import "bulma";
 class SearchResultContainer extends Component {
   state = {
     search: "",
@@ -15,7 +15,7 @@ class SearchResultContainer extends Component {
   }
 
   generatePeople = () => {
-    for (let i =0; i< 15; i++){
+    for (let i =0; i< 5; i++){
       API.search()
       .then(res => {
         this.setState({ results: [...this.state.results, res.data.results[0] ]});
@@ -25,7 +25,12 @@ class SearchResultContainer extends Component {
         // console.log(res.data.results[0])//contains the info needed
       })
       .catch(err => console.log(err));
-    }
+      
+      }
+
+  };
+
+    
     // API.search()
     //   .then(res => {
     //     this.setState({ results: res.data.results[0] });
@@ -35,7 +40,6 @@ class SearchResultContainer extends Component {
     //     console.log(res.data.results[0])//contains the info needed
     //   })
     //   .catch(err => console.log(err));
-  };
 
   // handleInputChange = event => {
   //   const name = event.target.name;
